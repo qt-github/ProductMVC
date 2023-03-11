@@ -48,16 +48,27 @@ public class ProductRepository implements CrudRepository {
 
     @Override
     public Object delete(Object entity, Object o) {
+        EntityTransaction transaction = entityManager.getTransaction();
+        try {
+            transaction.begin();
+            Object oj =findByID(entity, o);
+            entityManager.remove(o);
+            transaction.commit();
+        }catch (Exception e){
+            transaction.rollback();
+            e.printStackTrace();
+            return null;
+        }
         return null;
     }
 
     @Override
     public Object findByID(Object entity, Object o) {
-        return null;
+        return (Object) entityManager.find(entity.getClass(), o);
     }
 
     @Override
-    public Object findAll(Object entity) {
+    public Iterable findAll() {
         return null;
     }
 }

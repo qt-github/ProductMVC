@@ -10,5 +10,5 @@ public interface CrudRepository<T, ID> {
 
     T findByID(T entity, ID id);
 
-    T findAll(T entity);
+    Iterable<T> findAll();
 }
