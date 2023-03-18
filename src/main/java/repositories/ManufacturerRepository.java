@@ -1,25 +1,16 @@
 package repositories;
 
+import entities.Manufacturer;
 import entities.Product;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
 
 import java.util.List;
 
-
-public class ProductRepository implements CrudRepository<Product,Long> {
+public class ManufacturerRepository implements CrudRepository<Manufacturer,Long>{
     private EntityManager entityManager;
-
-    public ProductRepository(EntityManager entityManager){
-        this.entityManager = entityManager;
-    }
-
-    public ProductRepository() {
-
-    }
-
     @Override
-    public Product create(Product entity) {
+    public Manufacturer create(Manufacturer entity) {
         EntityTransaction transaction = entityManager.getTransaction();
         try {
             transaction.begin();
@@ -34,7 +25,7 @@ public class ProductRepository implements CrudRepository<Product,Long> {
     }
 
     @Override
-    public Product update(Product entity, Long aLong) {
+    public Manufacturer update(Manufacturer entity, Long aLong) {
         EntityTransaction transaction = entityManager.getTransaction();
         try {
             transaction.begin();
@@ -50,7 +41,7 @@ public class ProductRepository implements CrudRepository<Product,Long> {
     }
 
     @Override
-    public Product delete(Product entity, Long aLong) {
+    public Manufacturer delete(Manufacturer entity, Long aLong) {
         EntityTransaction transaction = entityManager.getTransaction();
         try {
             transaction.begin();
@@ -66,12 +57,12 @@ public class ProductRepository implements CrudRepository<Product,Long> {
     }
 
     @Override
-    public Product findByID(Product entity, Long aLong) {
-        return (Product) entityManager.find(entity.getClass(), aLong);
+    public Manufacturer findByID(Manufacturer entity, Long aLong) {
+        return (Manufacturer) entityManager.find(entity.getClass(), aLong);
     }
 
     @Override
-    public List<Product> findAll() {
-        return entityManager.createQuery("select p from Product p",Product.class).getResultList();
+    public List<Manufacturer> findAll() {
+        return entityManager.createQuery("select m from Manufacturer m ", Manufacturer.class).getResultList();
     }
 }

@@ -20,10 +20,10 @@ public class Manufacturer {
     @Column(nullable = false, unique = true, length = 50)
     private String manContactName;
 
-    @Column(nullable = false, unique = false, length = 50)
+    @Column(nullable = false, length = 50)
     private String manContactEmail;
 
-    @Column(nullable = false, unique = false, length = 12)
+    @Column(nullable = false, length = 12)
     private String manContactPhone;
 
     @Column(nullable = false, unique = true, length = 50)

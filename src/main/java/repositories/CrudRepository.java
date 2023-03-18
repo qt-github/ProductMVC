@@ -1,5 +1,7 @@
 package repositories;
 
+import java.util.List;
+
 public interface CrudRepository<T, ID> {
 
     T create(T entity);
@@ -10,5 +12,5 @@ public interface CrudRepository<T, ID> {
 
     T findByID(T entity, ID id);
 
-    Iterable<T> findAll();
+    List<T> findAll();
 }
